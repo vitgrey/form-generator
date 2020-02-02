@@ -1,0 +1,14 @@
+<div class="button">
+  <button
+    button="submit"
+    mat-raised-button
+    color="primary"
+    (click)="openDialog()"
+  >
+    <mat-icon>add</mat-icon> Add Input
+  </button>
+</div>
+
+<div class="wrapper" *ngFor="let form of forms; let i = index">
+  <app-form [form]="form" [index]="i"></app-form>
+</div>

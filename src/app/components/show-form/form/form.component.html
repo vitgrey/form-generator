@@ -1,0 +1,65 @@
+<mat-card class="example-card">
+  <mat-card-content>
+    <div [ngSwitch]="form.type">
+      <ng-template ngSwitchCase="text">
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              [(placeholder)]="form.placeholder"
+              [(value)]="form.value"
+            />
+          </mat-form-field>
+        </form>
+      </ng-template>
+      <ng-template ngSwitchCase="radio">
+        <mat-radio-group aria-label="Select an option">
+          <div *ngFor="let data of form.data">
+            <mat-radio-button [(value)]="data.value">
+              {{ data.name }}</mat-radio-button
+            >
+          </div>
+        </mat-radio-group>
+      </ng-template>
+      <ng-template ngSwitchCase="slider">
+        <mat-slider></mat-slider>
+      </ng-template>
+      <ng-template ngSwitchCase="sliderToggle">
+        <mat-slide-toggle>{{ form.value }}</mat-slide-toggle>
+      </ng-template>
+      <ng-template ngSwitchCase="datePicker">
+        <mat-form-field>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [(placeholder)]="form.placeholder"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </ng-template>
+      <ng-template ngSwitchCase="checkBox">
+        <div *ngFor="let data of form.data">
+          <mat-checkbox>{{ data.name }}</mat-checkbox>
+        </div>
+      </ng-template>
+      <ng-template ngSwitchCase="select">
+        <mat-form-field>
+          <mat-label>{{ form.placeholder }}</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let data of form.data" [(value)]="data.value">
+              {{ data.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-template>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="openDialog()">EDIT</button>
+    <button mat-button (click)="deleteForm(index)">DELETE</button>
+  </mat-card-actions>
+</mat-card>
