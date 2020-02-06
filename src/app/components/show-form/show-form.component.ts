@@ -31,6 +31,7 @@ export class ShowFormComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      // return result ? this.formService.addForm(result): null
       if (!result) {
         return;
       }

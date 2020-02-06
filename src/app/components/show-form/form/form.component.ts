@@ -21,6 +21,7 @@ export class FormComponent {
   }
 
   public openDialog(): void {
+    // check JSON.parse(JSON.stringify( ??
     const dialogRef = this.dialog.open(ChangeFormComponent, {
       width: '30vw',
       data: JSON.parse(
@@ -29,6 +30,7 @@ export class FormComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      // return result ? this.formService.updateCurrentForm(result, this.index) : null
       if (!result) {
         return;
       }

@@ -9,6 +9,7 @@ export class FormService {
   public model: FormModel[];
 
   constructor() {
+    // this.model = localStorage.getItem('form') ? this.model = JSON.parse(localStorage.getItem('form')) : localStorage.setItem('form', JSON.stringify(this.model))
     if (localStorage.getItem('form')) {
       this.model = JSON.parse(localStorage.getItem('form'));
     } else {
